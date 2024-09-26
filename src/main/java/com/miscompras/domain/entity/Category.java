@@ -25,6 +25,6 @@ public class Category {
 	private int estado;
 
 	@OneToMany(mappedBy = "categorias")
-	private List<Productos> productos;
+	private List<Product> productos;
 
 }
