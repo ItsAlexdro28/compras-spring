@@ -9,8 +9,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.Data;
 
 @Entity
+@Data
 @Table(name = "categorias")
 public class Category {
 	
@@ -24,7 +26,41 @@ public class Category {
 	@Column(length = 20, nullable = true)
 	private int estado;
 
-	@OneToMany(mappedBy = "categorias")
+	@OneToMany(mappedBy = "categoria")
 	private List<Product> productos;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public int getEstado() {
+		return estado;
+	}
+
+	public void setEstado(int estado) {
+		this.estado = estado;
+	}
+
+	public List<Product> getProductos() {
+		return productos;
+	}
+
+	public void setProductos(List<Product> productos) {
+		this.productos = productos;
+	}
+
+
 
 }

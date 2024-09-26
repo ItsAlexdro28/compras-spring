@@ -3,11 +3,17 @@ package com.miscompras.domain.entity;
 import java.util.List;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import lombok.Data;
 
+@Entity
+@Data
+@Table(name = "clientes")
 public class Client {
 	
 	@Id
@@ -29,8 +35,8 @@ public class Client {
 	@Column(length = 70, nullable = false)
 	private String correo;
 
-	@OneToMany(mappedBy = "client")
-	private List<Bought> bought;
+	@OneToMany(mappedBy = "cliente")
+	private List<Sale> sale;
 
 
 }

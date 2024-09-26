@@ -1,5 +1,7 @@
 package com.miscompras.domain.entity;
 
+import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,31 +14,27 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "productos")
-public class Product {
-
+@Table(name = "compras")
+public class Sale {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(length = 45, nullable = false)
-	private String nombre;
-
 	@ManyToOne
-	@JoinColumn(name = "categoria_id")
-	private Category categoria;
+	@JoinColumn(name = "cliente_id")
+	private Client cliente;
 
-	@Column(length = 120, nullable = false)
-	private String codigo_barras;
+	@Column(length = 100, nullable = false)
+	private Date fecha;
 
-	@Column(length = 20, nullable = false)
-	private Long precio_venta;
+	@Column(length = 1, nullable = false)
+	private String medio_pago;
 
-	@Column(length = 30, nullable = false)
-	private int catidad_stock;
+	@Column(length = 300, nullable = false)
+	private String comentario;
 
-	@Column(length = 10, nullable = false)
-	private int estado;
-
+	@Column(length = 1, nullable = false)
+	private String estado;
 
 }
