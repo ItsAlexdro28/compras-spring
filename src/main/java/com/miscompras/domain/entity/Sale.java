@@ -29,12 +29,62 @@ public class Sale {
 	private Date fecha;
 
 	@Column(length = 1, nullable = false)
-	private String medio_pago;
+	private String medioPago;
 
 	@Column(length = 300, nullable = false)
 	private String comentario;
 
 	@Column(length = 1, nullable = false)
 	private String estado;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Client getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Client cliente) {
+		this.cliente = cliente;
+	}
+
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
+	public String getMedioPago() {
+		return medioPago;
+	}
+
+	public void setMedioPago(String medioPago) {
+		this.medioPago = medioPago;
+	}
+
+	public String getComentario() {
+		return comentario;
+	}
+
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+
 
 }

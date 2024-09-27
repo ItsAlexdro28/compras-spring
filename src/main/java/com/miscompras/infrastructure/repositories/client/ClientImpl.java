@@ -42,6 +42,11 @@ public class ClientImpl implements ClientService {
 		if(clientOld.isPresent()){
 			Client clientDb = clientOld.orElseThrow();
 			clientDb.setNombre(client.getNombre());
+			clientDb.setApellido(client.getApellido());
+			clientDb.setCelular(client.getCelular());
+			clientDb.setDirreccion(client.getDirreccion());
+			clientDb.setCorreo(client.getCorreo());
+			clientDb.setSale(client.getSale());
 			return Optional.of(clientRepository.save(clientDb));
 		}
 		return Optional.empty();

@@ -6,12 +6,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
+import lombok.Data;
 
+@Data
 @Entity
-public class Sales_Products {
+public class SalesProducts {
 
 	@EmbeddedId
-	private Sales_ProductsId id = new Sales_ProductsId();
+	private SalesProductsId id = new SalesProductsId();
 
 	@ManyToOne
 	@MapsId("compraId")
