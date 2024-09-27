@@ -35,22 +35,27 @@ public class CategoryImpl implements CategoryService {
 		return categoryRepository.save(category);
 	}
 
+	@Transactional
 	@Override
 	public Optional<Category> update(Long id, Category category) {
 		Optional<Category> categoryOld = categoryRepository.findById(id);
 		if(categoryOld.isPresent()){
 			Category categoryDb = categoryOld.orElseThrow();
 			categoryDb.setDescripcion(category.getDescripcion());
+			categoryDb.setEstado(category.getEstado());
 			return Optional.of(categoryRepository.save(categoryDb));
 		}
 		return Optional.empty();
 	}
 
+	@Transactional(readOnly = true)
 	@Override
 	public Optional<Category> delete(Long id) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'delete'");
+		Optional<Category> categoryOptional = categoryRepository.findById(id);
+		categoryOptional.ifPresent(categorytDb -> {
+			categoryRepository.delete(categorytDb);
+		});
+		return categoryOptional;
 	}
-
 
 }
