@@ -3,6 +3,7 @@ package com.miscompras.infrastructure.repositories.category;
 import java.util.List;
 import java.util.Optional;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,11 +49,12 @@ public class CategoryImpl implements CategoryService {
 		return Optional.empty();
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional
 	@Override
 	public Optional<Category> delete(Long id) {
 		Optional<Category> categoryOptional = categoryRepository.findById(id);
 		categoryOptional.ifPresent(categorytDb -> {
+			Hibernate.initialize(categorytDb.getProductos());
 			categoryRepository.delete(categorytDb);
 		});
 		return categoryOptional;

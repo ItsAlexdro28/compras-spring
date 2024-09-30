@@ -52,7 +52,7 @@ public class SalesProductsImpl implements SalesProductsService {
 		return Optional.empty();
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional
 	@Override
 	public Optional<SalesProducts> delete(SalesProductsId id) {
 		Optional<SalesProducts> salesProductsOptional = salesProductsRepository.findById(id);

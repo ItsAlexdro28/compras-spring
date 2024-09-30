@@ -51,7 +51,7 @@ public class SaleImpl implements SaleService {
 		return Optional.empty();
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional
 	@Override
 	public Optional<Sale> delete(Long id) {
 		Optional<Sale> saleOptional = saleRepository.findById(id);

@@ -3,6 +3,7 @@ package com.miscompras.infrastructure.repositories.client;
 import java.util.List;
 import java.util.Optional;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,11 +53,12 @@ public class ClientImpl implements ClientService {
 		return Optional.empty();
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional
 	@Override
 	public Optional<Client> delete(Long id) {
 		Optional<Client> clientOptional = clientRepository.findById(id);
 		clientOptional.ifPresent(clienttDb -> {
+			Hibernate.initialize(clienttDb.getSale());
 			clientRepository.delete(clienttDb);
 		});
 		return clientOptional;
