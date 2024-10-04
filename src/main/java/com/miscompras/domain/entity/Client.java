@@ -11,8 +11,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Data
 @Table(name = "clientes")
@@ -40,62 +44,5 @@ public class Client {
 	@OneToMany(mappedBy = "cliente")
 	@JsonIgnore
 	private List<Sale> sale;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getApellido() {
-		return apellido;
-	}
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-
-	public int getCelular() {
-		return celular;
-	}
-
-	public void setCelular(int celular) {
-		this.celular = celular;
-	}
-
-	public String getDirreccion() {
-		return dirreccion;
-	}
-
-	public void setDirreccion(String dirreccion) {
-		this.dirreccion = dirreccion;
-	}
-
-	public String getCorreo() {
-		return correo;
-	}
-
-	public void setCorreo(String correo) {
-		this.correo = correo;
-	}
-
-	public List<Sale> getSale() {
-		return sale;
-	}
-
-	public void setSale(List<Sale> sale) {
-		this.sale = sale;
-	}
-
 
 }
